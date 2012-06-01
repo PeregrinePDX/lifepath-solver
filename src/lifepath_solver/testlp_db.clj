@@ -30,7 +30,7 @@
  											:stat		{:p 1}
  											:leads		[:Test]
  											:skill-pts	3
- 											:skills		["Trouble-wise" "Throwing" "Inconspicuous"]
+ 											:skills		["Trouble-wise" "Throwing Exceptions"]
  											:trait-pts	1
- 											:traits		["Bad Egg" "Good For Nothing" "Fleet of Foot"]
+ 											:traits		["Incompetent"]
  											:restriction	(restrict-and (position not= 1) (position = 2))}}})
