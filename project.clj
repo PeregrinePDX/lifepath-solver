@@ -1,6 +1,6 @@
 (defproject lifepath-solver "0.1.0-SNAPSHOT"
-  :description "FIXME: write description"
-  :url "http://example.com/FIXME"
+  :description "This will eventually solve lifepath's for Burning Wheel Gold. For now we're working on being able to validate that a vector of lp's follow the rules."
+  :url "https://github.com/PeregrinePDX/lifepath-solver"
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
   :dependencies [[org.clojure/clojure "1.3.0"]])
