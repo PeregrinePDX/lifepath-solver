@@ -7,7 +7,11 @@
     (let [item (get lp-list pos)]
       (let [setting (get item :setting) name (get item :name) ]
         (let [restriction (get (get (get db/lp-db setting) name) :restriction)]
-          (restriction {:position (inc pos) :name name :setting setting :lp-list lp-list})))))
+          (def previous-lps (take pos lp-list))
+          (def skill-list (flatten (map (fn [coll] (get (get (get db/lp-db (get coll :setting)) (get coll :name)) :skills))  previous-lps)))
+          (def setting-list (map (fn [coll] (get coll :setting)) previous-lps))
+          (def prevlp-list (map (fn [coll] (get coll :name)) previous-lps))
+          (restriction {:position (inc pos) :name name :setting setting-list :lp-list prevlp-list :skill-list skill-list})))))
 
 (defn valid-lp-list?
   "Takes a lifepath list and verifies that all lp restrictions are met. Returns True if list is valid. False if it's not."

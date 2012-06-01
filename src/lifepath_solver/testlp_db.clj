@@ -17,7 +17,16 @@
 					   						:traits		["Caffeine addicted"]
 					   						:skill-pts	8
 					   						:skills		["Caffeinated beverage-wise" "Exception-wise"]
-					   						:restriction	(position not= 1)}}
+					   						:restriction	(position not= 1)}
+               "Java Programmer" 		{	:time		2
+					   						:resources 	1
+					   						:stat		{:m 1}
+					   						:leads		[:Test2]
+					   						:trait-pts	1
+					   						:traits		["CamelCaser"]
+					   						:skill-pts	8
+					   						:skills		["Patterns-wise"]
+					   						:restriction	(restrict-and (position not= 1) (skill-req has? "Exception-wise"))}}
  :Test2			{ 	"Born in a black Box"	{	:time		4
  											:resources	12
  											:leads		[:Test]
