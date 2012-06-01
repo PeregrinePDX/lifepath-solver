@@ -1,5 +1,5 @@
 (ns lifepath-solver.core
-  [:require lifepath-solver.lifepaths-db :as db])
+  (:require [lifepath-solver.testlp-db :as db]))
 
 (defn check-lp? 
   "Takes a vector of Index, [Vector of setting and lp] the entire lp-list and verifies that lp is valid at that position"
@@ -17,4 +17,4 @@
 (defn -main
   "Do a test of our validator"
   [& args]
-  (valid-lp-list? [{:setting :Villager :name "Village Born"} {:setting :Villager :name "Kid"}]))
+  (valid-lp-list? [{:setting :Test :name "Born Tester"} {:setting :Test2 :name "Acceptance Tester"}]))
