@@ -60,4 +60,29 @@
  											:skills		["Trouble-wise" "Throwing Exceptions"]
  											:trait-pts	1
  											:traits		["Incompetent"]
- 											:restriction	(restrict-and (position not= 1) (lifepath-req has? "Java Programmer"))}}})
+ 											:restriction	(restrict-and (position not= 1) (lifepath-req has? "Java Programmer"))}}
+ :LP-list-length      { "Born Limited"  {  :time 8
+                              :resources 15
+                              :stat {:m 1}
+                              :leads [:Test2]
+                              :skill-pts 3
+                              :skills ["A" "B"]
+                              :trait-pts 2
+                              :traits ["Not a trait"]
+                              :restriction (position = 1)}
+                         "Length Limited" { :time 2
+                              :resources 3
+                              :stat {#{:m :p} 1}
+                              :leads [:Test]
+                              :skill-pts 1
+                              :skills ["C" "B"]
+                              :trait-pts 1
+                              :restriction (restrict-and (position not= 1) (list-length <= 2))}
+                         "ALAL" { :time 2
+                              :resources 3
+                              :stat {#{:m :p} 1}
+                              :leads [:Test]
+                              :skill-pts 1
+                              :skills ["C" "B"]
+                              :trait-pts 1
+                              :restriction (restrict-and (position not= 1) (list-length > 2))}}})

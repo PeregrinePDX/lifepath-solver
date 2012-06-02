@@ -11,8 +11,9 @@
           previous-lps (take pos lp-list) 
           skill-list (flatten (map (fn [coll] (get-in db/lp-db [(:setting coll) (:name coll) :skills]))  previous-lps))
           setting-list (map (fn [coll] (:setting coll)) previous-lps)
-          prevlp-list (map (fn [coll] (:name coll)) previous-lps)]
-       (restriction {:position (inc pos) :name name :setting setting-list :lp-list prevlp-list :skill-list skill-list})))
+          prevlp-list (map (fn [coll] (:name coll)) previous-lps)
+          lp-list-length (count lp-list)]
+       (restriction {:position (inc pos) :name name :setting setting-list :lp-list prevlp-list :skill-list skill-list :lp-list-length lp-list-length})))
 
 (defn valid-lp-list?
   "Takes a lifepath list and verifies that all lp restrictions are met. Returns True if list is valid. False if it's not."
