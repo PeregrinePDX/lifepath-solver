@@ -1,10 +1,5 @@
 (ns lifepath-solver.validator-predicates)
 
-(defn position 
-  "Handles position requirements"
-  [operand req]
-  (fn [coll] (operand req (get coll :position))))
-
 (defn restrict-and
   "Composes multiple requirements returning true if all return true."
   [& req-list]
@@ -15,21 +10,20 @@
   [& req-list]
   (fn [coll] (some every? true? (map (fn [fun] (fun coll)) req-list))))
 
-(defn skill-req
-  "Applies an operand to the list of skills from previous lps"
+(defn position 
+  "Handles position requirements"
   [operand req]
-    (fn [coll] (operand req (get coll :skill-list))))
+  (fn [coll] (operand req (:position coll))))
 
-(defn lifepath-req
-  "Applies an operand to the list of previous lifepaths"
-  [operand req]
-  (fn [coll] (operand req (get coll :lp-list))))
+(defn property-req
+  "Applies an operand to the property  from previous lps"
+  [property operand req]
+  (fn [coll] (operand req (get coll property))))
 
-(defn setting-req
-  "Applies an operand to the conjed list of previous settings
-   FIXME: STUB"
-  [operand req]
-  (fn [coll] (operand req (get coll :setting))))
+
+(def skill-req (partial property-req :skill-list))
+(def lifepath-req (partial property-req :lp-list))
+(def setting-req (partial property-req :setting))
 
 (defn has? [key list] (some #(= key %) list))
 (def has-not? (complement has?))

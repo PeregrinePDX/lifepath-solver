@@ -1,5 +1,5 @@
 (ns lifepath-solver.testlp-db
-  [:use lifepath-solver.validator-predicates])
+  (:use lifepath-solver.validator-predicates))
 
 (def lp-db {:Test           { 	"Born Tester" 	{	:time 3 
 											:resources 45 
@@ -26,7 +26,16 @@
 					   						:traits		["CamelCaser"]
 					   						:skill-pts	8
 					   						:skills		["Patterns-wise"]
-					   						:restriction	(restrict-and (position not= 1) (skill-req has? "Exception-wise"))}}
+					   						:restriction	(restrict-and (position not= 1) (skill-req has? "Exception-wise"))}
+               "Programming God" {	:time		2
+					   						:resources 	1
+					   						:stat		{:m 1}
+					   						:leads		[:Test2]
+					   						:trait-pts	1
+					   						:traits		["Foo"]
+					   						:skill-pts	8
+					   						:skills		["Patterns-wise"]
+					   						:restriction	(restrict-and (position not= 1) (setting-req has? :Test2))}}
  :Test2			{ 	"Born in a black Box"	{	:time		4
  											:resources	12
  											:leads		[:Test]
@@ -42,4 +51,13 @@
  											:skills		["Trouble-wise" "Throwing Exceptions"]
  											:trait-pts	1
  											:traits		["Incompetent"]
- 											:restriction	(restrict-and (position not= 1) (position = 2))}}})
+ 											:restriction	(restrict-and (position not= 1) (position = 2))}
+        		"Clojure Programmer"			{	:time		1
+ 											:resources	24
+ 											:stat		{:p 1}
+ 											:leads		[:Test]
+ 											:skill-pts	3
+ 											:skills		["Trouble-wise" "Throwing Exceptions"]
+ 											:trait-pts	1
+ 											:traits		["Incompetent"]
+ 											:restriction	(restrict-and (position not= 1) (lifepath-req has? "Java Programmer"))}}})
