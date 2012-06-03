@@ -29,8 +29,14 @@
 (def lifepath-req (partial property-req :lp-list))
 (def setting-req (partial property-req :setting))
 
-
-(defn has-not?   [key list]
+(defn has-not?
+  [key list]
   (nil? (some (if (set? key) key #{key}) list)))
 (def has? (complement has-not?))
 
+(defn count-lp?
+  [key list]
+  (let [lp (first key)
+        operand (second key)
+        times (nth key 2)]
+    (operand (count (filter #(= lp %) list)) times)))

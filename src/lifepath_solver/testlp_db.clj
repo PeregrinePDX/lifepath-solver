@@ -1,5 +1,5 @@
 (ns lifepath-solver.testlp-db
-  (:use lifepath-solver.validator-predicates))
+  (:use [lifepath-solver.validator-predicates]))
 
 (def lp-db {:Test           { 	"Born Tester" 	{	:time 3 
 											:resources 45 
@@ -85,4 +85,31 @@
                               :skill-pts 1
                               :skills ["C" "B"]
                               :trait-pts 1
-                              :restriction (restrict-and (position not= 1) (list-length > 2))}}})
+                              :restriction (restrict-and (position not= 1) (list-length > 2))}}
+ :Lifepath-Reqs    {  "Born to a lifepath" { :time 8
+                              :resources 15
+                              :stat {:m 1}
+                              :leads [:Test2]
+                              :skill-pts 3
+                              :skills ["A" "B"]
+                              :trait-pts 2
+                              :traits ["Not a trait"]
+                              :restriction (position = 1)}
+                       "Do this multiple times" { :time 8
+                              :resources 15
+                              :stat {:m 1}
+                              :leads [:Test2]
+                              :skill-pts 3
+                              :skills ["A" "B"]
+                              :trait-pts 2
+                              :traits ["Not a trait"]
+                              :restriction (restrict-and (position not= 1) (lifepath-req has? #{"Born to a lifepath"}))}
+                       "Must have had a previous lp multiple times" {:time 8
+                              :resources 15
+                              :stat {:m 1}
+                              :leads [:Test2]
+                              :skill-pts 3
+                              :skills ["A" "B"]
+                              :trait-pts 2
+                              :traits ["Not a trait"]
+                              :restriction (lifepath-req count-lp? ["Do this multiple times" = 3])}}})
