@@ -1,0 +1,20 @@
+Types of Lp Requirements
+
+Combiners - And, Or
+
+Positional -  Has to be 1st, may not be 1st, has to be second, etc
+Specific previous lp - Has to have had a specific lifepath or list of lifepaths in the past
+Type of Previous lp - Has to have Ardent multiple LP's could satisfy Ardent
+Property of previous lp -  Gender specific lp, priest type lp
+LP from a setting - Host Lifepath
+Age Requirement - Must be 750 after taking lp, must be a certain age before taking lp, must not be older then a certain age at the end of lp list, must be older then a certain age at the end of lp list, must be x older then other characters in group, Must be taken during a certain decade (ie must be taken while in their 40's)
+
+Trait requirement - Must have a specific trait, may not have trait
+
+LP List Length - No more then 3 lp's, more then 3 lp's total
+Skill requirement - A previous lp that contains a certain skill
+Gender requirement - Character must be Gender
+Limited number of times - May only be taken once
+
+
+Multiple of another type of requirement - Three Host Lifepaths, Three Arbalester Lifepaths
