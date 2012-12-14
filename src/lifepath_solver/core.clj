@@ -1,12 +1,30 @@
 (ns lifepath-solver.core
   (:require [lifepath-solver.testlp-db :as db]))
 
+; Copyright Chris Lappe <chris.lappe@gmail.com> 2012
+; This code is intended to verify the validity of a series of lifepaths for
+; the roleplaying game Burning Wheel. Lifepaths are used during character 
+; creation and have a complex set of requirements that sometimes makes it hard
+; to verify if something is valid or not.
+;
+; The core namespace is going to have a minimal set of functions in it. 
+; check-lp? will check that a specific lp meets all of it's requirements.
+; valid-lp-list? will check that a list of lp's is valid.
+;
+; We'll implement this by writing a simple DSL to describe the constraints of
+; a lifepath. 
+;
+; The namespace lifepath-solver.testlp-db is a testing database of fake
+; lifepaths used for testing and publishing on the internet since the actual
+; lifepath database is copyright and I do not have permission to post it 
+; publicly.
+
 (defn check-lp? 
-  "Takes a vector of Index, [Vector of setting and lp] the entire lp-list and verifies that lp is valid at that position"
+  "Takes an ndex and the entire lp-list and verifies that the lp at that position meets the requirements. Returns true if it is valid and false if it is not."
   [pos lp-list]
-    (let [item (get lp-list pos) 
-          setting (:setting item )
-          name (:name item )
+    (let [item (get lp-list pos)      ; Retrieves the item from the list to be tested. 
+          setting (:setting item )    ; Retrieves the setting of that item.
+          name (:name item )          ; Retrieves the lifepath name.
           restriction (get-in db/lp-db [setting name :restriction]) 
           previous-lps (take pos lp-list) 
           skill-list (flatten (map (fn [coll] (get-in db/lp-db [(:setting coll) (:name coll) :skills]))  previous-lps))
