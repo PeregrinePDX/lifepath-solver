@@ -4,7 +4,7 @@ This is a library under development to produce a solver for Burning Wheel Gold l
 
 ## Usage
 
-FIXME
+You can test this library by running lein test in the toplevel of the directory.
 
 ## License
 
